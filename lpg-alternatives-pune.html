@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LPG Alternatives — Pune & Maharashtra</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --surface: #fffdf7;
+    --green-deep: #1a3a2a;
+    --green-mid: #2d6a4f;
+    --green-light: #52b788;
+    --amber: #e9a825;
+    --amber-light: #f7c948;
+    --rust: #c46a2b;
+    --text: #1c1c1c;
+    --text-muted: #555;
+    --border: #d5cfc0;
+    --tag-bg: #e8f4ec;
+    --tag-text: #2d6a4f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--green-deep);
+    padding: 52px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(82,183,136,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse at 10% 80%, rgba(233,168,37,0.12) 0%, transparent 50%);
+  }
+  .header-inner { position: relative; max-width: 1200px; margin: 0 auto; }
+  .header-badge {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--green-deep);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    max-width: 700px;
+  }
+  .header h1 span { color: var(--amber-light); }
+  .header p {
+    color: rgba(255,255,255,0.72);
+    font-size: 15px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .header-meta {
+    margin-top: 28px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 30px;
+  }
+  .meta-pill .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green-light);
+    flex-shrink: 0;
+  }
+
+  /* ── SUMMARY CARDS ── */
+  .summary-section {
+    max-width: 1200px;
+    margin: 36px auto 0;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  .sum-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 18px;
+    text-align: center;
+  }
+  .sum-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--green-mid);
+    line-height: 1;
+  }
+  .sum-card .label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-weight: 500;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    max-width: 1200px;
+    margin: 28px auto 0;
+    padding: 0 24px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .legend-label { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-right: 4px; }
+  .cat-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .cat-biogas    { background: #e6f4ec; color: #1a6b3c; }
+  .cat-piped     { background: #e8f0fc; color: #1a3a7c; }
+  .cat-community { background: #fdf3e3; color: #7a4a00; }
+
+  /* ── TABLE ── */
+  .table-wrapper {
+    max-width: 1200px;
+    margin: 20px auto 50px;
+    padding: 0 24px;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 13.5px;
+  }
+  thead tr { background: transparent; }
+  thead th {
+    background: var(--green-deep);
+    color: rgba(255,255,255,0.88);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  thead th:first-child { border-radius: 8px 0 0 8px; }
+  thead th:last-child  { border-radius: 0 8px 8px 0; }
+
+  tbody tr {
+    background: var(--surface);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  }
+  tbody td {
+    padding: 14px 16px;
+    vertical-align: top;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    line-height: 1.55;
+  }
+  tbody td:first-child { border-left: 1px solid var(--border); border-radius: 8px 0 0 8px; }
+  tbody td:last-child  { border-right: 1px solid var(--border); border-radius: 0 8px 8px 0; }
+
+  /* row accent stripe */
+  .row-accent { border-left: 4px solid var(--green-light) !important; border-radius: 8px 0 0 8px !important; }
+  .row-accent-blue { border-left: 4px solid #6a9fe8 !important; border-radius: 8px 0 0 8px !important; }
+  .row-accent-amber { border-left: 4px solid var(--amber) !important; border-radius: 8px 0 0 8px !important; }
+
+  /* cell types */
+  .name-cell { min-width: 150px; }
+  .provider { font-weight: 700; font-size: 14px; color: var(--green-deep); }
+  .sub-provider { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .cat-chip {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-top: 5px;
+  }
+
+  .tech-cell { min-width: 160px; color: var(--text); }
+  .tech-cell strong { font-size: 13px; display: block; margin-bottom: 3px; }
+
+  .contact-cell { min-width: 190px; }
+  .phone-link, .email-link, .web-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .phone-link { color: var(--green-mid); font-weight: 600; }
+  .email-link { color: var(--rust); }
+  .web-link   { color: #2563eb; }
+  .phone-link:hover, .email-link:hover, .web-link:hover { text-decoration: underline; }
+  .icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+
+  .address-cell { min-width: 200px; font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+  
+  .uses-cell { min-width: 200px; }
+  .use-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    margin: 2px 2px 2px 0;
+  }
+
+  .cost-cell { min-width: 140px; }
+  .cost-main { font-weight: 700; color: var(--green-deep); font-size: 13.5px; }
+  .cost-sub  { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+
+  .notes-cell { min-width: 180px; font-size: 12.5px; color: var(--text); line-height: 1.55; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-deep);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 22px;
+    font-size: 12px;
+  }
+  footer strong { color: rgba(255,255,255,0.85); }
+
+  @media (max-width: 700px) {
+    .header { padding: 36px 20px 28px; }
+    .summary-section, .legend, .table-wrapper { padding: 0 12px; }
+    thead th, tbody td { padding: 10px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-badge">🔥 Energy Alternatives 2026</div>
+    <h1>Beyond the Cylinder —<br><span>LPG Alternatives</span> for Pune & Maharashtra</h1>
+    <p>A curated directory of biogas, piped gas, and waste-to-energy solutions — with full contact details, pricing, and where each technology is deployed.</p>
+    <div class="header-meta">
+      <div class="meta-pill"><span class="dot"></span> 7 Providers Listed</div>
+      <div class="meta-pill"><span class="dot"></span> Pune-Centric with Pan-India Options</div>
+      <div class="meta-pill"><span class="dot"></span> Updated March 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY CARDS -->
+<div class="summary-section">
+  <div class="sum-card"><div class="num">7</div><div class="label">Solutions Listed</div></div>
+  <div class="sum-card"><div class="num">4</div><div class="label">Biogas / Wet Waste</div></div>
+  <div class="sum-card"><div class="num">1</div><div class="label">Piped Natural Gas</div></div>
+  <div class="sum-card"><div class="num">2</div><div class="label">Pan-India Providers</div></div>
+  <div class="sum-card"><div class="num">0</div><div class="label">LPG Cylinders Needed 🙌</div></div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="legend-label">Category:</span>
+  <span class="cat-badge cat-biogas">🌿 Biogas / Wet Waste</span>
+  <span class="cat-badge cat-piped">🔵 Piped Natural Gas</span>
+  <span class="cat-badge cat-community">🏘️ Community / Large-Scale</span>
+</div>
+
+<!-- TABLE -->
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Provider / Solution</th>
+        <th>Technology</th>
+        <th>Contact Details</th>
+        <th>Address</th>
+        <th>Where It Is Used</th>
+        <th>Cost / Pricing</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 1. VAAYU MITRA -->
+      <tr>
+        <td style="color:var(--text-muted);font-weight:700;">01</td>
+        <td class="name-cell">
+          <div class="provider">Vaayu Mitra</div>
+          <div class="sub-provider">by Vishwadeep Press Parts Pvt. Ltd.</div>
+          <span class="cat-chip cat-biogas">🌿 Biogas</span>
+        </td>
+        <td class="tech-cell">
+          <strong>Compact Domestic Biodigester</strong>
+          Anaerobic digestion of kitchen/food waste → methane gas stored in a balloon, piped directly to stove. Produces ~200 L gas/day (2 kg unit). No electricity needed.
+        </td>
+        <td class="contact-cell">
+          <a href="tel:+917620175930" class="phone-link"><span class="icon">📞</span>+91-76201 75930</a>
+          <a href="tel:+917276102977" class="phone-link"><span class="icon">📞</span>+91-72761 02977</a>
+          <a href="https://vaayu-mitra.com" target="_blank" class="web-link"><span class="icon">🌐</span>vaayu-mitra.com</a>
+          <a href="https://in.linkedin.com/company/vaayu-biogas" target="_blank" class="web-link"><span class="icon">🔗</span>LinkedIn Page</a>
+        </td>
+        <td class="address-cell">
+          Pune, Maharashtra<br>
+          <em>Serves 50 km radius across Pune</em>
+        </td>
+        <td class="uses-cell">
+          <span class="use-tag">Households</span>
+          <span class="use-tag">Fergusson College (DES)</span>
+          <span class="use-tag">Suparna Mangal Karyalaya, Sahakar Nagar</span>
+          <span class="use-tag">Cloud Kitchens</span>
+          <span class="use-tag">Hotels & Hostels</span>
+          <span class="use-tag">Housing Societies</span>
+          <br><em style="font-size:11px;color:var(--text-muted);">350+ homes; 3.2 T/day wet waste; saves 3,173 LPG cylinders/year</em>
+        </td>
+        <td class="cost-cell">
+          <div class="cost-main">₹1,10,000</div>
+          <div class="cost-sub">10 kg/day unit (canteen/restaurant size). Smaller domestic units available. Contact for quote.</div>
+        </td>
+        <td class="notes-cell">
+          Founder: Priyadarshan Sahasrabuddhe, IIT-Bombay alumnus. Featured on BBC, National Geographic & Better India. No LPG cylinder purchased since 2019. Offsets 192 T CO₂/year.
+        </td>
+      </tr>
+
+      <!-- 2. ERA HYDROBIOTECH -->
+      <tr>
+        <td style="color:var(--text-muted);font-weight:700;">02</td>
+        <td class="name-cell">
+          <div class="provider">Era Hydro-Biotech Energy Pvt. Ltd.</div>
+          <div class="sub-provider">BARC-Licensed Manufacturer, Pune</div>
+          <span class="cat-chip cat-community">🏘️ Community/Large</span>
+        </td>
+        <td class="tech-cell">
+          <strong>BARC Nisarga-Runa Biogas</strong>
+          Tri-phasic anaerobic process; handles kitchen waste, food waste, wet bio-garbage, sludge. Biogas for cooking/heating/electricity. Residual slurry = organic fertilizer. BARC-approved.
+        </td>
+        <td class="contact-cell">
+          <a href="tel:+919370820037" class="phone-link"><span class="icon">📞</span>+91-93708 20037</a>
+          <a href="tel:+919372298992" class="phone-link"><span class="icon">📞</span>+91-93722 98992</a>
+          <em style="font-size:11.5px;color:var(--text-muted);">Contact: Pratik Chopade</em>
+          <a href="https://www.erahydrobiotech.com" target="_blank" class="web-link"><span class="icon">🌐</span>erahydrobiotech.com</a>
+          <a href="https://www.erahbt.co.in" target="_blank" class="web-link"><span class="icon">🌐</span>erahbt.co.in</a>
+        </td>
+        <td class="address-cell">
+          Survey No. 230/2/3, Near Gauri Baug,<br>
+          "BIZPRO" Building No. 8, 3rd Floor,<br>
+          Vidhate Wasti, Baner,<br>
+          Pune – 411 007
+        </td>
+        <td class="uses-cell">
+          <span class="use-tag">Residential Complexes</span>
+          <span class="use-tag">Institutional Canteens</span>
+          <span class="use-tag">Hotels</span>
+          <span class="use-tag">Industrial Units</span>
+          <span class="use-tag">Hospitals</span>
+          <span class="use-tag">Municipal Bodies</span>
+        </td>
+        <td class="cost-cell">
+          <div class="cost-main">Custom Quote</div>
+          <div class="cost-sub">Prefabricated and underground models. Contact for sizing and pricing based on daily waste volume.</div>
+        </td>
+        <td class="notes-cell">
+          Est. 2006. BARC-licensed for Nisarga-Runa technology (meaning: "Nature's Loan"). Operates Mon–Fri 9:30 AM–6 PM, Sat 9:30 AM–2 PM. Also provides Water Treatment & STP plants.
+        </td>
+      </tr>
+
+      <!-- 3. BARC NISARGRUNA -->
+      <tr>
+        <td style="color:var(--text-muted);font-weight:700;">03</td>
+        <td class="name-cell">
+          <div class="provider">BARC Nisargruna Technology</div>
+          <div class="sub-provider">Bhabha Atomic Research Centre</div>
+          <span class="cat-chip cat-community">🏘️ Community/Large</span>
+        </td>
+        <td class="tech-cell">
+          <strong>Two-Stage Anaerobic Digestion</strong>
+          Processes biodegradable kitchen waste, paper, grass, food scraps — not just dung. Zero-garbage, zero-effluent method. Output: biogas (cooking/electricity) + bio-manure.
+        </td>
+        <td class="contact-cell">
+          <a href="https://www.barc.gov.in/technologies/kitchen/kitchen_lf.html" target="_blank" class="web-link"><span class="icon">🌐</span>barc.gov.in (Technology Page)</a>
+          <em style="font-size:11.5px;color:var(--text-muted);">Inventor: Dr. Sharad Kale (Padma Shri)<br>Technology transfer to licensed manufacturers (e.g., Era Hydrobiotech)</em>
+        </td>
+        <td class="address-cell">
+          Bhabha Atomic Research Centre,<br>
+          Trombay, Mumbai – 400 085<br>
+          <em>(Technology licensed to manufacturers pan-India)</em>
+        </td>
+        <td class="uses-cell">
+          <span class="use-tag">BARC Campus</span>
+          <span class="use-tag">Anushaktinagar Residential Complex</span>
+          <span class="use-tag">Institutional Canteens (Mumbai)</span>
+          <span class="use-tag">Licensed plants across Maharashtra</span>
+        </td>
+        <td class="cost-cell">
+          <div class="cost-main">Via Licensed Vendors</div>
+          <div class="cost-sub">Contact BARC-licensed manufacturers like Era Hydrobiotech for installation cost.</div>
+        </td>
+        <td class="notes-cell">
+          Invented 2003. Nisargruna = Nisarg (Nature) + Runa (Loan). Handles ~400–500 g biodegradable waste per person/day. Two plants at BARC handle 3,000 T/day (Mumbai scale).
+        </td>
+      </tr>
+
+      <!-- 4. MNGL PNG -->
+      <tr>
+        <td style="color:var(--text-muted);font-weight:700;">04</td>
+        <td class="name-cell">
+          <div class="provider">Maharashtra Natural Gas Ltd. (MNGL)</div>
+          <div class="sub-provider">Piped Natural Gas – Pune</div>
+          <span class="cat-chip cat-piped">🔵 Piped Gas</span>
+        </td>
+        <td class="tech-cell">
+          <strong>Piped Natural Gas (PNG)</strong>
+          Underground pipeline delivery of methane (CH₄) directly to your stove. No cylinder needed. 24×7 supply. Lighter than air — safer than LPG in leakage. Burns 20% hotter than LPG.
+        </td>
+        <td class="contact-cell">
+          <a href="tel:18002662696" class="phone-link"><span class="icon">📞</span>1800 266 2696 (Toll-Free)</a>
+          <a href="tel:9011676767" class="phone-link"><span class="icon">📞</span>9011676767 (Emergency)</a>
+          <a href="mailto:customercare@mngl.in" class="email-link"><span class="icon">✉️</span>customercare@mngl.in</a>
+          <a href="https://www.mngl.in" target="_blank" class="web-link"><span class="icon">🌐</span>mngl.in</a>
+        </td>
+        <td class="address-cell">
+          Walk-in Centres:<br>
+          <strong>Shivajinagar:</strong> Sr No-28/2, GF, Office No-1, Zenith Plaza, K.M. Gandhi Path, Near Cloudline Hospital, Pune-411005<br>
+          <strong>Chinchwad:</strong> 1st Floor, Metropolitan Commercial Complex, Near Darshan Hall, PCMC Link Road, Chinchwad-411033<br>
+          <strong>Viman Nagar:</strong> Shop 206, Lunkad Sky Max Mall, Datta Mandir Chowk, Pune-411014
+        </td>
+        <td class="uses-cell">
+          <span class="use-tag">Domestic Households</span>
+          <span class="use-tag">Commercial Kitchens</span>
+          <span class="use-tag">Hotels & Restaurants</span>
+          <span class="use-tag">Industries</span>
+          <span class="use-tag">Magarpatta City</span>
+          <span class="use-tag">Hinjewadi IT Park area</span>
+          <br><em style="font-size:11px;color:var(--text-muted);">Coverage: Pune, Pimpri-Chinchwad, Chakan, Talegaon, Hinjewadi & expanding</em>
+        </td>
+        <td class="cost-cell">
+          <div class="cost-main">₹54–60/SCM</div>
+          <div class="cost-sub">Connection: ₹6,000 upfront (₹5,000 refundable deposit + ₹500 petrol deposit + ₹500 application fee). Bi-monthly billing on actual usage.</div>
+        </td>
+        <td class="notes-cell">
+          JV of GAIL (India) Ltd. + BPCL + Govt. of Maharashtra. ~5% cheaper than LPG. No cylinder storage, booking, or waiting. Pay only after use. One-time nipple adaptor modification on stove needed.
+        </td>
+      </tr>
+
+      <!-- 5. BIOTECH INDIA NANO -->
+      <tr>
+        <td style="color:var(--text-muted);font-weight:700;">05</td>
+        <td class="name-cell">
+          <div class="provider">Biotech India — Nano Biogas Plant</div>
+          <div class="sub-provider">Kerala-based, ships Pan-India</div>
+          <span class="cat-chip cat-biogas">🌿 Biogas</span>
+        </td>
+        <td class="tech-cell">
+          <strong>Nano V1 / Nano V2 Domestic Digesters</strong>
+          0.5 m³ capacity. Converts vegetable scraps, fruit peels, food leftovers into biogas. Compact design for kitchen-side or rooftop installation. Professional installation included.
+        </td>
+        <td class="contact-cell">
+          <a href="https://www.biotech-india.org" target="_blank" class="web-link"><span class="icon">🌐</span>biotech-india.org</a>
+          <a href="https://www.biotech-india.org/nanobiogas.aspx" target="_blank" class="web-link"><span class="icon">🌐</span>Nano Biogas Page</a>
+          <em style="font-size:11.5px;color:var(--text-muted);">Contact form on website for local installer referral</em>
+        </td>
+        <td class="address-cell">
+          Biotech India Pvt. Ltd.<br>
+          Thiruvananthapuram, Kerala<br>
+          (Pan-India distribution and installation via dealer network)
+        </td>
+        <td class="uses-cell">
+          <span class="use-tag">Small Families (Nuclear)</span>
+          <span class="use-tag">Apartments</span>
+          <span class="use-tag">Rooftop Gardens</span>
+          <span class="use-tag">Urban Homes</span>
+        </td>
+        <td class="cost-cell">
+          <div class="cost-main">Contact for Price</div>
+          <div class="cost-sub">Nano V1 and Nano V2 models (0.5 m³). Pricing via website / local dealer. Includes professional installation.</div>
+        </td>
+        <td class="notes-cell">
+          Pioneer in nano-scale domestic biogas. Nano V2 is more compact than V1. Ideal for small urban families. Over 20,000 plants installed in Kerala alone in last 5 years. Produces bio-fertilizer as bonus output.
+        </td>
+      </tr>
+
+      <!-- 6. HOMEBIOGAS -->
+      <tr>
+        <td style="color:var(--text-muted);font-weight:700;">06</td>
+        <td class="name-cell">
+          <div class="provider">HomeBiogas</div>
+          <div class="sub-provider">Israeli Brand, Available in India</div>
+          <span class="cat-chip cat-biogas">🌿 Biogas</span>
+        </td>
+        <td class="tech-cell">
+          <strong>Backyard Biodigester System</strong>
+          Above-ground design; converts food waste + animal manure into up to 6 hrs cooking gas/day + liquid bio-fertilizer. 15+ year lifespan. Assembly in under 3 hours. Safety filters & auto gas-release valve.
+        </td>
+        <td class="contact-cell">
+          <a href="https://www.homebiogas.com" target="_blank" class="web-link"><span class="icon">🌐</span>homebiogas.com</a>
+          <em style="font-size:11.5px;color:var(--text-muted);">Available via IndiaMART dealers in Pune / pan-India. Search "HomeBiogas India" on IndiaMART for local supplier contact.</em>
+        </td>
+        <td class="address-cell">
+          International brand<br>
+          (Dealers in Ranchi, Pune, and across India via IndiaMART network)
+        </td>
+        <td class="uses-cell">
+          <span class="use-tag">Backyard / Garden Homes</span>
+          <span class="use-tag">Farms</span>
+          <span class="use-tag">Rural Households</span>
+          <span class="use-tag">Smallholder Farmers</span>
+        </td>
+        <td class="cost-cell">
+          <div class="cost-main">~₹80,000–₹1,65,000</div>
+          <div class="cost-sub">Approx. $1,000–$2,000 USD equivalent. Reduces ~6 MT CO₂/year per unit. Check current INR pricing with local dealer.</div>
+        </td>
+        <td class="notes-cell">
+          UNDP & WWF partnered. Gold Standard certified climate impact. Best for homes with outdoor space (needs sunlight, temp above 10°C). Requires food waste + some animal manure for startup.
+        </td>
+      </tr>
+
+      <!-- 7. B-SUSTAIN -->
+      <tr>
+        <td style="color:var(--text-muted);font-weight:700;">07</td>
+        <td class="name-cell">
+          <div class="provider">B-Sustain Biogas Plants</div>
+          <div class="sub-provider">Domestic & Community Scale</div>
+          <span class="cat-chip cat-biogas">🌿 Biogas</span>
+        </td>
+        <td class="tech-cell">
+          <strong>FRP Fixed-Dome Digesters</strong>
+          Modular range from 0.5 m³ to 5 m³/day. Processes food waste, market vegetable waste, animal dung, poultry litter, press mud, municipal sewage. LPG partial or full replacement for cooking.
+        </td>
+        <td class="contact-cell">
+          <a href="https://bsustain.in" target="_blank" class="web-link"><span class="icon">🌐</span>bsustain.in</a>
+          <a href="https://bsustain.in/domestic.html" target="_blank" class="web-link"><span class="icon">🌐</span>Domestic Plants Page</a>
+          <em style="font-size:11.5px;color:var(--text-muted);">Contact form available on website</em>
+        </td>
+        <td class="address-cell">
+          Pan-India supply<br>
+          (Contact via website for Pune region installer/distributor)
+        </td>
+        <td class="uses-cell">
+          <span class="use-tag">Households</span>
+          <span class="use-tag">Apartment Complexes</span>
+          <span class="use-tag">Hostels</span>
+          <span class="use-tag">Markets</span>
+          <span class="use-tag">Poultry Farms</span>
+        </td>
+        <td class="cost-cell">
+          <div class="cost-main">₹15,000–₹80,000+</div>
+          <div class="cost-sub">Varies with size (0.5 m³ to 5 m³). Contact for site-specific quote. Slurry output usable as free organic fertilizer.</div>
+        </td>
+        <td class="notes-cell">
+          Feed ratio: mix solid waste 1:1 with water before feeding. Must avoid citrus/tamarind, plastics, chemicals. Clean-up every 6 months. Cow dung used as inoculum for initial startup only.
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!-- QUICK TIPS -->
+<div style="max-width:1200px;margin:0 auto 50px;padding:0 24px;">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 32px;">
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--green-deep);margin-bottom:16px;">
+      🧭 Quick Decision Guide
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;">
+      <div style="background:var(--tag-bg);border-radius:10px;padding:16px;">
+        <div style="font-weight:700;font-size:13px;color:var(--green-mid);margin-bottom:6px;">🏢 Housing Society / Large Building</div>
+        <div style="font-size:12.5px;color:var(--text-muted);">Era Hydrobiotech (BARC Nisarga-Runa) or MNGL PNG pipeline — both handle bulk scale. PNG is simplest; biogas is self-sustaining with wet waste.</div>
+      </div>
+      <div style="background:#fdf3e3;border-radius:10px;padding:16px;">
+        <div style="font-weight:700;font-size:13px;color:#7a4a00;margin-bottom:6px;">🏠 Single Apartment / Flat</div>
+        <div style="font-size:12.5px;color:var(--text-muted);">Vaayu Mitra (balcony/terrace unit) or MNGL PNG (if pipeline exists in your building). Cheapest long-term option.</div>
+      </div>
+      <div style="background:#e8f0fc;border-radius:10px;padding:16px;">
+        <div style="font-weight:700;font-size:13px;color:#1a3a7c;margin-bottom:6px;">🍽️ Restaurant / Cloud Kitchen</div>
+        <div style="font-size:12.5px;color:var(--text-muted);">Vaayu Mitra's 10 kg/day unit (₹1.1L) or MNGL PNG commercial connection. Saves ₹40,000–₹80,000/year vs LPG at commercial rates.</div>
+      </div>
+      <div style="background:#f9e8f0;border-radius:10px;padding:16px;">
+        <div style="font-weight:700;font-size:13px;color:#7a1a4a;margin-bottom:6px;">🌾 Farm / Bungalow with Garden</div>
+        <div style="font-size:12.5px;color:var(--text-muted);">HomeBiogas (outdoor backyard unit, uses food waste + animal manure) or B-Sustain modular plant. Bonus: liquid bio-fertilizer for crops.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Compiled from public sources &amp; official websites. Verify pricing and availability directly with providers. &nbsp;|&nbsp; <strong>Last Updated: March 2026</strong> &nbsp;|&nbsp; For Pune &amp; Maharashtra Region.
+</footer>
+
+</body>
+</html>
